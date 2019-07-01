@@ -15,7 +15,7 @@ class CreateAlumnosTable extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             //$table->string('ncontrol',10)->unique();
-            $table->string('ncontrol',10)->primary();
+            $table->string('ncontrol',10)->primary();//para que se mysql la reconozca como pk
             $table->string('nombre',50);
             $table->string('ap_pat',50);
             $table->string('ap_mat',50);
