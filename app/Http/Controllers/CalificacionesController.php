@@ -29,8 +29,6 @@ class CalificacionesController extends Controller
             $grupos = Session::get('grupos');
             $periodos = Session::get('periodos');
         }
-        //return $periodos." ".$grupos;
-        //
         /*$calificacion = new Calificacion;
         $calificacion->calificacion="EXCELENTE";
         $calificacion->ncontrol="05940003";
