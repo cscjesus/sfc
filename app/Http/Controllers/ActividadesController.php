@@ -101,7 +101,7 @@ class ActividadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //modificado para hacer git
         $actividad=Actividad::find($id);
         $actividad->nombre=mb_strtoupper($request->nombre, 'UTF-8');
         $actividad->tipo=mb_strtoupper($request->tipo, 'UTF-8');
