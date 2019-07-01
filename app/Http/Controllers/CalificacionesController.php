@@ -72,7 +72,7 @@ class CalificacionesController extends Controller
     public function create(Request $request)
     {
         return $request;
-        // 
+        // no se necesitan estas acciones
         return "Dentro de calificaciones create";
 
     }
