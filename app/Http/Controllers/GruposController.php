@@ -50,7 +50,7 @@ class GruposController extends Controller
 
     public function create()
     {
-    
+        //se agrego un comentario
         $mensajes = "";
         $grados = self::grados;
         $grupos = self::grupos;
