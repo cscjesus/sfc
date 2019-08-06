@@ -18,7 +18,7 @@ class ActividadesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
         /*$actividad = new Actividad;
@@ -43,7 +43,10 @@ class ActividadesController extends Controller
     public function create()
     {
         $tipos=self::tipos;
-        return view('actividades.create',compact('tipos'));
+        $actividad = new Actividad();
+        $actividad->idactividad = 0;
+        $actividad->creditos = 1;
+        return view('actividades.create',compact('tipos','actividad'));
     }
 
     /**

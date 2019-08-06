@@ -11,7 +11,6 @@
 @include('shared.errores')
 
 <h2>Agregar</h2>
-<hr>
 {{ Form::model($alumno,[ 'route' => ['Alumnos.store',$alumno], 'method' => 'POST']) }}
     @include('shared.controlesAlumnos')
     <div class="form-group">
@@ -24,7 +23,6 @@
         </div>
     </div>
 {!! Form::close() !!}
-<hr>
 
 
 @include('shared.AgregarAlumnos')

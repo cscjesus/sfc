@@ -13,12 +13,12 @@
 <h2>Editar</h2>
 
 {{ Form::model($alumno,[ 'route' => ['Alumnos.update',$alumno,$alumno->ncontrol], 'method' => 'PUT']) }}
-    @include('shared.controlesAlumnos')
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
-        </div>
+@include('shared.controlesAlumnos')
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
     </div>
+</div>
 {!! Form::close() !!}
 
 
@@ -30,18 +30,18 @@
 
 @section('my_scripts')
 <script>
-  $(document).ready(
+    $(document).ready(
     function(){
-     /* var mensaje ='{{--$mensajes--}}';
-          if(mensaje !='')
-            swal('¡Atención!',mensaje,'warning');*/
-      $("#btnGuardar").click(function(){
-        if($('#idcarrera').val()=="SELEC")
-        {
-          swal("seleccione una carrera");
-          return false;
-        }
-      });
+        /* var mensaje ='{{--$mensajes--}}';
+            if(mensaje !='')
+                swal('¡Atención!',mensaje,'warning');*/
+        $("#btnGuardar").click(function(){
+            if($('#idcarrera').val()=="SELEC")
+            {
+            swal("seleccione una carrera");
+            return false;
+            }
+        });
     });
-  </script>
+</script>
 @endsection
