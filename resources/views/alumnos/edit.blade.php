@@ -12,12 +12,12 @@
 
 <h2>Editar</h2>
 
-{{ Form::model($alumno,[ 'route' => ['Alumnos.update',$alumno,$alumno->ncontrol], 'method' => 'PUT','enctype'=>'multipart/form-data']) }}
+{{ Form::model($alumno,[ 'route' => ['Alumnos.update',$alumno,$alumno->ncontrol], 'method' => 'PUT']) }}
       {{--@include('pasteles.partials.fields')  --}}
       <div class="form-horizontal">
       <h4>Estudiante</h4>
       <hr/>
-      {{--para la ncontrol--}} 
+      {{--para la ncontrol--}}
       <div class="form-group">
       {{  Form::label('ncontrol', 'NCONTROL', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
@@ -26,21 +26,21 @@
                   'disabled'=>'disabled']) }}
           </div>
       </div>
-      {{--para el nombre--}} 
+      {{--para el nombre--}}
       <div class="form-group">
       {{  Form::label('nombre', 'NOMBRE', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
                   {{ Form::text('nombre',null,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
           </div>
       </div>
-      {{--para el ap_pat--}} 
+      {{--para el ap_pat--}}
       <div class="form-group">
       {{  Form::label('ap_pat', 'AP. PAT.', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
                   {{ Form::text('ap_pat',null,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
           </div>
       </div>
-      {{--para el ap_mat--}} 
+      {{--para el ap_mat--}}
       <div class="form-group">
       {{  Form::label('ap_mat', 'AP. MAT.', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
@@ -48,14 +48,14 @@
           </div>
       </div>
 
-      {{--para la modalidad--}} 
+      {{--para la modalidad--}}
       <div class="form-group">
               {{  Form::label('idmodalidad', 'MODALIDAD', ['class' => 'control-label col-md-2']) }}
               <div class="col-md-10">
   {{Form::select('idmodalidad',$modalidades, null,['class'=>'form-control'])}}
               </div>
       </div>
-      {{--para la carrera--}} 
+      {{--para la carrera--}}
       <div class="form-group">
               {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
               <div class="col-md-10">
@@ -71,7 +71,7 @@
       </div>
   {!! Form::close() !!}
 
-    
+
 <div>
     <a href="{{route('Alumnos.index')}}" class="btn btn-info">
         Regresar</a>

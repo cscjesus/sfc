@@ -18,33 +18,33 @@
       <div class="form-horizontal">
       <h4>Estudiante</h4>
 
-   
-        
+
+
       <hr/>
-      {{--para la ncontrol--}} 
+      {{--para la ncontrol--}}
       <div class="form-group">
       {{  Form::label('ncontrol', 'NCONTROL', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
               {{ Form::text('ncontrol','',['required' => 'required','placeholder'=>'12345678',
                   'class'=>'form-control','title'=>'ncontrol:12345678','pattern'=>'^[0-9]{8}$','autocomplete'=>'off']) }}
           </div>
-          
+
       </div>
-      {{--para el nombre--}} 
+      {{--para el nombre--}}
       <div class="form-group">
       {{  Form::label('nombre', 'NOMBRE', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
                   {{ Form::text('nombre','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
           </div>
       </div>
-      {{--para el ap_pat--}} 
+      {{--para el ap_pat--}}
       <div class="form-group">
       {{  Form::label('ap_pat', 'AP. PAT.', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
                   {{ Form::text('ap_pat','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
           </div>
       </div>
-      {{--para el ap_mat--}} 
+      {{--para el ap_mat--}}
       <div class="form-group">
       {{  Form::label('ap_mat', 'AP. MAT.', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
@@ -52,14 +52,14 @@
           </div>
       </div>
 
-      {{--para la modalidad--}} 
+      {{--para la modalidad--}}
       <div class="form-group">
               {{  Form::label('idmodalidad', 'MODALIDAD', ['class' => 'control-label col-md-2']) }}
               <div class="col-md-10">
   {{Form::select('idmodalidad',$modalidades, 'Seleccione Modalidad',['class'=>'form-control'])}}
               </div>
       </div>
-      {{--para la carrera--}} 
+      {{--para la carrera--}}
       <div class="form-group">
               {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
               <div class="col-md-10">
@@ -72,14 +72,14 @@
           <div class="col-md-offset-2 col-md-10">
               <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
 
-              <button type="button" class="btn btn-info" data-toggle="modal" 
-              data-target="#myModalAdd" id="btnAgregarArchivo" 
+              <button type="button" class="btn btn-info" data-toggle="modal"
+              data-target="#myModalAdd" id="btnAgregarArchivo"
               data-backdrop="static" data-keyboard="false">Agregar archivo</button>
           </div>
       </div>
 
 
-      
+
 
   {!! Form::close() !!}
 @else{{-- ya se ha hecho un postback y se deben llenar las cajas con los valores del usuario--}}
@@ -88,7 +88,7 @@
       <div class="form-horizontal">
       <h4>Estudiante</h4>
       <hr/>
-      {{--para la ncontrol--}} 
+      {{--para la ncontrol--}}
       <div class="form-group">
       {{  Form::label('ncontrol', 'NCONTROL', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
@@ -96,21 +96,21 @@
                   'class'=>'form-control','title'=>'ncontrol:12345678','pattern'=>'^[0-9]{8}$','autocomplete'=>'off']) }}
           </div>
       </div>
-      {{--para el nombre--}} 
+      {{--para el nombre--}}
       <div class="form-group">
       {{  Form::label('nombre', 'NOMBRE', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
                   {{ Form::text('nombre',$alumno->nombre,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
           </div>
       </div>
-      {{--para el ap_pat--}} 
+      {{--para el ap_pat--}}
       <div class="form-group">
       {{  Form::label('ap_pat', 'AP. PAT.', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
                   {{ Form::text('ap_pat',$alumno->ap_pat,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
           </div>
       </div>
-      {{--para el ap_mat--}} 
+      {{--para el ap_mat--}}
       <div class="form-group">
       {{  Form::label('ap_mat', 'AP. MAT.', ['class' => 'control-label col-md-2']) }}
           <div class="col-md-10">
@@ -118,14 +118,14 @@
           </div>
       </div>
 
-      {{--para la modalidad--}} 
+      {{--para la modalidad--}}
       <div class="form-group">
               {{  Form::label('idmodalidad', 'MODALIDAD', ['class' => 'control-label col-md-2']) }}
               <div class="col-md-10">
   {{Form::select('idmodalidad',$modalidades, $alumno->idmodalidad,['class'=>'form-control'])}}
               </div>
       </div>
-      {{--para la carrera--}} 
+      {{--para la carrera--}}
       <div class="form-group">
               {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
               <div class="col-md-10">
@@ -142,13 +142,13 @@
 
   {{ Form::close() }}
 
- 
-       
+
+
 @endif
 
 
 @include('shared.AgregarAlumnos')
-    
+
 <div>
     <a href="{{route('Alumnos.index')}}" class="btn btn-info">
         Regresar</a>
@@ -181,7 +181,7 @@
           $("#nombre").removeAttr("required");
           $("#ap_pat").removeAttr("required");
           $("#ap_mat").removeAttr("required");
-          
+
           $.ajax({url:"http://localhost/sgc/public/Alumnos",
                     data: { "_token": "{{ csrf_token() }}",
                     "varios":'varios',//campo para que sepa en controlador que van a ser varios estudiantes
@@ -230,13 +230,15 @@
             //aqui se borraba todo...
         } else
             swal("Seleccione un archivo");
-          
+
       });
       // para cargar el archivo de excel
     var json_object;//guarda los datos del archivo excel
-    var ExcelToJSON = function () {
-        this.parseExcel = function (file) {
-            var reader = new FileReader();
+    //para cargar el archivo de excel
+    $('#upload').change(function(evt){
+
+        var file = evt.target.files[0]; // FileList object
+        var reader = new FileReader();
             reader.onload = function (e) {
                 var data = e.target.result;
                 var workbook = XLSX.read(data, {
@@ -253,32 +255,20 @@
                         $("#tabla tbody").append("<tr>" +
                                 "<td>" + this.ncontrol + "</td>" +
                                 "<td>" + this.nombre + "</td>" +
-                                //"<td>"+this.ap_pat+"</td>"+
                                 "<td>" + this.ap_paterno + "</td>" +
-                                //"<td>"+this.ap_mat+"</td>"+
                                 "<td>" + this.ap_materno + "</td>" +
-                                //"<td>"+this.idcarrera+"</td>"+
                                 "<td>" + this.carrera + "</td>" +
                                 "</tr>");
                     });
                     //console.log(JSON.parse(json_object));
                     //jQuery('#xlx_json').val(json_object);
-                })
+                });
             };
             reader.onerror = function (ex) {
                 console.log(ex);
             };
             reader.readAsBinaryString(file);
-        };
-    };
-    function handleFileSelect(evt) {
-
-        var files = evt.target.files; // FileList object
-        var xl2json = new ExcelToJSON();
-        xl2json.parseExcel(files[0]);
-    }
-    //para cargare el archivo de excel
-    document.getElementById('upload').addEventListener('change', handleFileSelect, false);
     });
+ });
   </script>
 @endsection
