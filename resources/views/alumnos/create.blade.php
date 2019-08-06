@@ -11,140 +11,20 @@
 @include('shared.errores')
 
 <h2>Agregar</h2>
-{{-- verificar si es un postback--}}
-@if(empty($alumno)){{--si alumno esta vacio, entonces no se ha hecho postback --}}
-  {{ Form::open([ 'route' => 'Alumnos.store', 'method' => 'POST','enctype'=>'multipart/form-data']) }}
-      {{--@include('pasteles.partials.fields')  --}}
-      <div class="form-horizontal">
-      <h4>Estudiante</h4>
+<hr>
+{{ Form::model($alumno,[ 'route' => ['Alumnos.store',$alumno], 'method' => 'POST']) }}
+    @include('shared.controlesAlumnos')
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
 
-
-
-      <hr/>
-      {{--para la ncontrol--}}
-      <div class="form-group">
-      {{  Form::label('ncontrol', 'NCONTROL', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-              {{ Form::text('ncontrol','',['required' => 'required','placeholder'=>'12345678',
-                  'class'=>'form-control','title'=>'ncontrol:12345678','pattern'=>'^[0-9]{8}$','autocomplete'=>'off']) }}
-          </div>
-
-      </div>
-      {{--para el nombre--}}
-      <div class="form-group">
-      {{  Form::label('nombre', 'NOMBRE', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-                  {{ Form::text('nombre','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
-          </div>
-      </div>
-      {{--para el ap_pat--}}
-      <div class="form-group">
-      {{  Form::label('ap_pat', 'AP. PAT.', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-                  {{ Form::text('ap_pat','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
-          </div>
-      </div>
-      {{--para el ap_mat--}}
-      <div class="form-group">
-      {{  Form::label('ap_mat', 'AP. MAT.', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-                  {{ Form::text('ap_mat','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
-          </div>
-      </div>
-
-      {{--para la modalidad--}}
-      <div class="form-group">
-              {{  Form::label('idmodalidad', 'MODALIDAD', ['class' => 'control-label col-md-2']) }}
-              <div class="col-md-10">
-  {{Form::select('idmodalidad',$modalidades, 'Seleccione Modalidad',['class'=>'form-control'])}}
-              </div>
-      </div>
-      {{--para la carrera--}}
-      <div class="form-group">
-              {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
-              <div class="col-md-10">
-                  {{--@php ($carreras["seleccione"]="asdfadsf")--}}
-  {{Form::select('idcarrera',$carreras, 'Seleccione Carrera',['class'=>'form-control'])}}
-              </div>
-      </div>
-      {{-- </div> --}}
-      <div class="form-group">
-          <div class="col-md-offset-2 col-md-10">
-              <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
-
-              <button type="button" class="btn btn-info" data-toggle="modal"
-              data-target="#myModalAdd" id="btnAgregarArchivo"
-              data-backdrop="static" data-keyboard="false">Agregar archivo</button>
-          </div>
-      </div>
-
-
-
-
-  {!! Form::close() !!}
-@else{{-- ya se ha hecho un postback y se deben llenar las cajas con los valores del usuario--}}
-{{ Form::open([ 'route' => 'Alumnos.store', 'method' => 'POST','enctype'=>'multipart/form-data']) }}
-      {{--@include('pasteles.partials.fields')  --}}
-      <div class="form-horizontal">
-      <h4>Estudiante</h4>
-      <hr/>
-      {{--para la ncontrol--}}
-      <div class="form-group">
-      {{  Form::label('ncontrol', 'NCONTROL', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-              {{ Form::text('ncontrol',$alumno->ncontrol,['required' => 'required','placeholder'=>'12345678',
-                  'class'=>'form-control','title'=>'ncontrol:12345678','pattern'=>'^[0-9]{8}$','autocomplete'=>'off']) }}
-          </div>
-      </div>
-      {{--para el nombre--}}
-      <div class="form-group">
-      {{  Form::label('nombre', 'NOMBRE', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-                  {{ Form::text('nombre',$alumno->nombre,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
-          </div>
-      </div>
-      {{--para el ap_pat--}}
-      <div class="form-group">
-      {{  Form::label('ap_pat', 'AP. PAT.', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-                  {{ Form::text('ap_pat',$alumno->ap_pat,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
-          </div>
-      </div>
-      {{--para el ap_mat--}}
-      <div class="form-group">
-      {{  Form::label('ap_mat', 'AP. MAT.', ['class' => 'control-label col-md-2']) }}
-          <div class="col-md-10">
-                  {{ Form::text('ap_mat',$alumno->ap_mat,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
-          </div>
-      </div>
-
-      {{--para la modalidad--}}
-      <div class="form-group">
-              {{  Form::label('idmodalidad', 'MODALIDAD', ['class' => 'control-label col-md-2']) }}
-              <div class="col-md-10">
-  {{Form::select('idmodalidad',$modalidades, $alumno->idmodalidad,['class'=>'form-control'])}}
-              </div>
-      </div>
-      {{--para la carrera--}}
-      <div class="form-group">
-              {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
-              <div class="col-md-10">
-                  {{--@php ($carreras["seleccione"]="asdfadsf")--}}
-  {{Form::select('idcarrera',$carreras, $alumno->idcarrera,['class'=>'form-control'])}}
-              </div>
-      </div>
-      {{-- </div> --}}
-     <div class="form-group">
-          <div class="col-md-offset-2 col-md-10">
-              <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
-          </div>
-      </div>
-
-  {{ Form::close() }}
-
-
-
-@endif
+            <button type="button" class="btn btn-info" data-toggle="modal"
+            data-target="#myModalAdd" id="btnAgregarArchivo"
+            data-backdrop="static" data-keyboard="false">Agregar archivo</button>
+        </div>
+    </div>
+{!! Form::close() !!}
+<hr>
 
 
 @include('shared.AgregarAlumnos')

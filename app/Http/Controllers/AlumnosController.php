@@ -48,9 +48,10 @@ class AlumnosController extends Controller
         $carreras = Carrera::orderBy('idcarrera','desc')->get()->pluck('nombre', 'idcarrera');
         $modalidades = Modalidad::get()->pluck('nombre', 'idmodalidad');
         //return $modalidades;
+        $alumno = new Alumno();
         //variable que guardara si el alumno esta repetido o no.
         $mensajes = '';
-        return view('alumnos.create', compact('carreras', 'modalidades', 'mensajes'));
+        return view('alumnos.create', compact('carreras', 'modalidades', 'mensajes','alumno'));
     }
 
     /**
@@ -61,9 +62,9 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
+           //variable que guardara si el alumno ya esta inscrito o no.
+           $mensajes = "";
         if(isset($request->varios)){
-                //variable que guardara si el alumno ya esta inscrito o no.
-            $mensajes = "";
             //crear el objeto para guardar los datos del alumno a agregar
             $alumno = new Alumno;
             $alumno->ncontrol = $request->ncontrol;
@@ -77,7 +78,7 @@ class AlumnosController extends Controller
             //revisar que el estudianto no exista
             $numeralumno = Alumno::where('ncontrol', $alumno->ncontrol)->count();
             //si el estudiant existe, retornar la vista de create, pero con lo datos introducidos
-            if ($numeralumno > 0) 
+            if ($numeralumno > 0)
                 return 'El numero de control ya existe:'.$alumno->ncontrol;
             //guardar al alumno si no esta dado de alta
             $alumno->save();
@@ -85,8 +86,6 @@ class AlumnosController extends Controller
         }
 
         //guardar un solo estudiante desde la vista
-        //variable que guardara si el alumno ya esta inscrito o no.
-        $mensajes = "";
         //crear el objeto para guardar los datos del alumno a agregar
         $alumno = new Alumno;
         $alumno->ncontrol = $request->ncontrol;
@@ -185,7 +184,7 @@ class AlumnosController extends Controller
     }
     /**
      * Agregar varios alumnos sin direccionar a alguna vista
-     * 
+     *
      */
     /*function buscar($ncontrol){
         return $ncontrol;
