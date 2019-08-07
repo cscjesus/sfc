@@ -10,6 +10,11 @@
 {{--vista que despliega errores--}}
 @include('shared.errores')
 
+{{-- {{ Form::open([ 'route' => 'Calificaciones.store', 'method' => 'POST',
+'enctype'=>'multipart/form-data']) }}
+
+{{ Form::close() }}  --}}
+
 <h2>Agregar</h2>
 {{ Form::model($alumno,[ 'route' => ['Alumnos.store',$alumno], 'method' => 'POST']) }}
     @include('shared.controlesAlumnos')

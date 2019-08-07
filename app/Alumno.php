@@ -26,4 +26,9 @@ class Alumno extends Model
         return $this->hasMany('App\Calificacion','ncontrol','ncontrol');
         //return $this->hasMany(Calificacion::class);
     }
+
+    public function getNombreCompletoAttribute(){
+        return $this->nombre." ".$this->ap_pat." ".$this->ap_mat;
+        //nombre_completo
+    }
 }

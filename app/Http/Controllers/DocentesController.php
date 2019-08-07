@@ -43,7 +43,8 @@ class DocentesController extends Controller
     {
         //
         $mensajes = '';
-        return view('docentes.create',compact('mensajes'));
+        $docente = new Docente();
+        return view('docentes.create',compact('mensajes','docente'));
     }
 
     /**
@@ -70,7 +71,7 @@ class DocentesController extends Controller
             return view('docentes.create',compact("mensajes","docente"));
         }
         $docente->save();
-        
+
          //llamar la accion Docentes.index, no la no la vista index
          return redirect()->route("Docentes.index");
     }

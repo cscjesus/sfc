@@ -17,5 +17,9 @@ class Docente extends Model
     public function grupos(){
         return $this->hasMany('App\Grupo','iddocente','iddocente');
     }
-    
+    public function getNombreCompletoAttribute(){
+        return $this->nombre." ".$this->ap_pat." ".$this->ap_mat;
+        //nombre_completo
+    }
+
 }

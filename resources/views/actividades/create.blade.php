@@ -10,6 +10,12 @@
 
 @include('shared.errores')
 
+{{-- {{ Form::open([ 'route' => 'Calificaciones.store', 'method' => 'POST',
+'enctype'=>'multipart/form-data']) }}
+
+{{ Form::close() }}  --}}
+
+
 <h2>Agregar</h2>
 
 {{ Form::model($actividad,[ 'route' => ['Actividades.store',$actividad], 'method' => 'POST','enctype'=>'multipart/form-data']) }}

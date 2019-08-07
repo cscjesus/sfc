@@ -16,22 +16,22 @@
 <div class="form-horizontal">
 <h4>Calificacion</h4>
 <hr/>
-{{--para la iddocente--}} 
+{{--para la iddocente--}}
 <div class="form-group">
 {{  Form::label('idgrupo', 'GRUPO', ['class' => 'control-label col-md-2']) }}
     <div class="col-md-10">
         {{ Form::text('idgrupo',$idgrupo,['required' => 'required','class'=>'form-control']) }}
     </div>
-    
+
 </div>
-{{--para el nombre--}} 
+{{--para el nombre--}}
 <div class="form-group">
 {{  Form::label('ncontrol', 'NCONTROL', ['class' => 'control-label col-md-2']) }}
     <div class="col-md-10">
             {{ Form::text('ncontrol','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
     </div>
 </div>
-{{--para el ap_pat--}} 
+{{--para el ap_pat--}}
 <div class="form-group">
 {{  Form::label('nombre', 'NOMBRE', ['class' => 'control-label col-md-2']) }}
     <div class="col-md-10">
@@ -39,7 +39,7 @@
             'readonly'=>''])}}
     </div>
 </div>
-{{--para el ap_mat--}} 
+{{--para el ap_mat--}}
 <div class="form-group">
 {{  Form::label('calificacion', 'CALIFICACION', ['class' => 'control-label col-md-2']) }}
     <div class="col-md-10">
@@ -51,8 +51,8 @@
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
         <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
-        <button type="button" class="btn btn-info" data-toggle="modal" 
-        data-target="#myModalAdd" id="btnAgregarArchivo" 
+        <button type="button" class="btn btn-info" data-toggle="modal"
+        data-target="#myModalAdd" id="btnAgregarArchivo"
         data-backdrop="static" data-keyboard="false">Agregar archivo</button>
     </div>
 </div>
@@ -85,9 +85,9 @@
               if(r=='' )
                 swal("El Estudiante no existe");
               else{
-                  $("#nombre").val(r);    
+                  $("#nombre").val(r);
                 }
-          }}); 
+          }});
        });
        //verificar si se ha seleccionado una calificaciones
        $("#btnGuardar").click(function(){
@@ -194,3 +194,12 @@
     });
    </script>
 @endsection
+
+
+
+
+
+{{-- {{ Form::open([ 'route' => 'Calificaciones.store', 'method' => 'POST',
+'enctype'=>'multipart/form-data']) }}
+
+{{ Form::close() }} --}}
