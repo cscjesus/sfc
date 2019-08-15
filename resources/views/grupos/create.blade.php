@@ -18,30 +18,30 @@
   <div class="form-horizontal">
   <h4>Grupo</h4>
   <hr/>
-  {{--para la materia--}} 
+  {{--para la materia--}}
   <div class="form-group">
   {{  Form::label('idgrupo', 'MATERIA', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
           {{ Form::text('idgrupo','',['required' => 'required','placeholder'=>'',
               'class'=>'form-control','autocomplete'=>'off']) }}
       </div>
-      
+
   </div>
-  {{--para el periodo--}} 
+  {{--para el periodo--}}
   <div class="form-group">
   {{  Form::label('periodo', 'PERIODO', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
               {{ Form::text('periodo','',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
       </div>
   </div>
-  {{--para el grado--}} 
+  {{--para el grado--}}
   <div class="form-group">
   {{  Form::label('grado', 'GRADUO Y GRUPO', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
         <div class="col-md-2" style="padding-left:0">
             {{ Form::select('grado',$grados,'',['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
         </div>
-      
+
         <div class="col-md-2" style="padding-left:0">
             {{ Form::select('grupo',$grupos,'',['required' => 'required','class'=>'form-control','autocomplete'=>'off',
             "id"=>"grupo"])}}
@@ -49,14 +49,14 @@
         <div class="col-md-8"></div>
       </div>
   </div>
-  {{--para el docente--}} 
+  {{--para el docente--}}
   <div class="form-group">
   {{  Form::label('iddocente', 'DOCENTE', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
-          {{Form::select('iddocente',$docentes, 'Seleccione',['class'=>'form-control'])}}      
+          {{Form::select('iddocente',$docentes, 'Seleccione',['class'=>'form-control'])}}
       </div>
   </div>
-  {{--para la actividad--}} 
+  {{--para la actividad--}}
   <div class="form-group">
   {{  Form::label('idactividad', 'ACTIVIDAD', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
@@ -64,7 +64,7 @@
       </div>
   </div>
 
-  {{--para la carrera--}} 
+  {{--para la carrera--}}
   <div class="form-group">
     {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
     <div class="col-md-10">
@@ -86,30 +86,30 @@
   <div class="form-horizontal">
   <h4>Grupo</h4>
   <hr/>
-  {{--para la materia--}} 
+  {{--para la materia--}}
   <div class="form-group">
   {{  Form::label('idgrupo', 'MATERIA', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
           {{ Form::text('idgrupo',$request->idgrupo,['required' => 'required','placeholder'=>'',
               'class'=>'form-control','autocomplete'=>'off']) }}
       </div>
-      
+
   </div>
-  {{--para el periodo--}} 
+  {{--para el periodo--}}
   <div class="form-group">
   {{  Form::label('periodo', 'PERIODO', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
               {{ Form::text('periodo',$request->periodo,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
       </div>
   </div>
-  {{--para el grado--}} 
+  {{--para el grado--}}
   <div class="form-group">
   {{  Form::label('grado', 'GRADUO Y GRUPO', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
         <div class="col-md-2" style="padding-left:0">
             {{ Form::select('grado',$grados,$request->grado,['required' => 'required','class'=>'form-control','autocomplete'=>'off'])}}
         </div>
-      
+
         <div class="col-md-2" style="padding-left:0">
             {{ Form::select('grupo',$grupos,$request->grupo,['required' => 'required','class'=>'form-control','autocomplete'=>'off',
             "id"=>"grupo"])}}
@@ -117,14 +117,14 @@
         <div class="col-md-8"></div>
       </div>
   </div>
-  {{--para el docente--}} 
+  {{--para el docente--}}
   <div class="form-group">
   {{  Form::label('iddocente', 'DOCENTE', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
-          {{Form::select('iddocente',$docentes, $request->iddocente,['class'=>'form-control'])}}      
+          {{Form::select('iddocente',$docentes, $request->iddocente,['class'=>'form-control'])}}
       </div>
   </div>
-  {{--para la actividad--}} 
+  {{--para la actividad--}}
   <div class="form-group">
   {{  Form::label('idactividad', 'ACTIVIDAD', ['class' => 'control-label col-md-2']) }}
       <div class="col-md-10">
@@ -132,7 +132,7 @@
       </div>
   </div>
 
-  {{--para la carrera--}} 
+  {{--para la carrera--}}
   <div class="form-group">
     {{  Form::label('idcarrera', 'CARRERA', ['class' => 'control-label col-md-2']) }}
     <div class="col-md-10">
@@ -198,7 +198,7 @@
             case 4:
             case 5:
             case 6:
-                periodo = "ENEJUN";
+                periodo = "ENE-JUN";
                 break;
             case 7:
             case 8:
@@ -206,7 +206,7 @@
             case 10:
             case 11:
             case 12:
-                periodo = "AGODIC";
+                periodo = "AGO-DIC";
                 break;
         }
         periodo += fecha.getFullYear().toString().substring(2);

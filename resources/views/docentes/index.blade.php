@@ -33,8 +33,8 @@
         <td>{{$docente->ap_mat}}</td> --}}
         <td>
         {{ Form::open([ 'route' => ['Docentes.destroy',$docente->iddocente], 'method' => "DELETE"]) }}
-          <a href="{{route('Docentes.edit',[$docente->iddocente])}}" class="btn btn-success btn-xs">Editar</a> |
-          <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+            <a href="{{route('Docentes.edit',[$docente->iddocente])}}" class="btn btn-success btn-xs">Editar</a> |
+            <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
         {{Form::close()}}
         </td>
       </tr>

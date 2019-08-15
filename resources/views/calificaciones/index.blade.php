@@ -5,7 +5,7 @@
 @section('styles_laravel')
 {{--estilos personalizado de create--}}
 <style>
-  @media print { 
+  @media print {
     a,button{
       display: none !important;
     }
@@ -29,7 +29,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <select name="periodos" id="periodos" class="form-control"> </select>      
+      <select name="periodos" id="periodos" class="form-control"> </select>
     </div>
     <div class="col-md-3">
       <select name="grupos" id="grupos" class="form-control" onchange="this.form.submit()"></select>
@@ -68,7 +68,8 @@
  <tr>
     <td>{{$calificacion->idcalificacion}}</td>
     <td>{{$calificacion->ncontrol}}</td>
-    <td>{{$calificacion->alumno->nombre." ".$calificacion->alumno->ap_pat." ".$calificacion->alumno->ap_mat}}</td>
+    {{-- <td>{{$calificacion->alumno->nombre." ".$calificacion->alumno->ap_pat." ".$calificacion->alumno->ap_mat}}</td> --}}
+    <td>{{$calificacion->alumno->nombre_completo}}</td>
     <td>{{$calificacion->calificacion}}</td>
     <td>{{$calificacion->idgrupo}} </td>
 
@@ -104,13 +105,13 @@
       dropdown.append($("<option/>").val("seleccione").text("Periodo"));
       var year = fecha.getFullYear() - 1;
       if(fecha.getMonth()<6)
-        dropdown.append($("<option/>").val("ENEJUN" + year.toString().substring(2)).text("ENEJUN" + year.toString().substring(2)));
-      dropdown.append($("<option/>").val("AGODIC" + year.toString().substring(2)).text("AGODIC" + year.toString().substring(2)));
+        dropdown.append($("<option/>").val("ENE-JUN" + year.toString().substring(2)).text("ENE-JUN" + year.toString().substring(2)));
+      dropdown.append($("<option/>").val("AGO-DIC" + year.toString().substring(2)).text("AGO-DIC" + year.toString().substring(2)));
       var year = fecha.getFullYear();
-      dropdown.append($("<option/>").val("ENEJUN" + year.toString().substring(2)).text("ENEJUN" + year.toString().substring(2)));
+      dropdown.append($("<option/>").val("ENE-JUN" + year.toString().substring(2)).text("ENE-JUN" + year.toString().substring(2)));
       if(fecha.getMonth()>=6)
-        dropdown.append($("<option/>").val("AGODIC" + year.toString().substring(2)).text("AGODIC" + year.toString().substring(2)));
-        
+        dropdown.append($("<option/>").val("AGO-DIC" + year.toString().substring(2)).text("AGO-DIC" + year.toString().substring(2)));
+
       $("#periodos").change(function(){
         $.getJSON("/sgc/public/Grupos/gruposPeriodo/"+$(this).val(), {}, function (result) {
             //alert(JSON.stringify(result));
@@ -126,7 +127,7 @@
 
                 }
                 //$("#grupos").val(grupos);//.change();
-              else  
+              else
                 dropgrupo.append($("<option/>").val(this.idgrupo).text(this.idgrupo));
             });
             var length = $('#grupos > option').length;
@@ -143,20 +144,20 @@
         //alert($(this).val());
         $('#formulario').attr('action', "/sgc/public/Calificaciones/"
         +$("#periodos").val()+"/"+$("#grupos").val()).submit();
-        
+
       });
       $("#btnAgregar").click(function(){
         //verificar que el link tenga el atributo url
         if($(this).attr('href')==''){
           swal('Seleccione periodo y grupo');
-          return false;          
+          return false;
         }
       });
         //verificar si ya se tiene el periodo del postback
         var periodos = '{{  $periodos}}';
         if(periodos!="")
           dropdown.val(periodos).change();
-        
+
           //alert(grupos);
 
      });
@@ -164,11 +165,11 @@
 
     /* if(typeof window.history.pushState == 'function') {
         window.history.pushState({}, "Hide", "/sgc/public/Calificaciones/");
-        
-    } */ 
-   
+
+    } */
+
      //agregar filtros y demas cosas a la tabla
-     $('#MyTable').DataTable({ "language": 
+     $('#MyTable').DataTable({ "language":
         { "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" } });
    </script>
 @endsection
