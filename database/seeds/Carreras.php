@@ -4,12 +4,18 @@ use Illuminate\Database\Seeder;
 
 class Carreras extends Seeder
 {
+    /*
+    Ejecutar el rollback y despues volver a migrar con los seeders
+
+    php artisan migrate:refresh --seed
+
+    */
     //comando para crear el seeder
     //php artisan make:seeder Carreras
     //despues: composer dump-autoload
     //al final: php artisan db:seed --class=Carreras
     //para ejecutar todos los seeders, llamarlos en DatabaseSeeder
-    
+
 
     /**
      * Run the database seeds.

@@ -34,15 +34,15 @@
     <td>{{$calificacion->alumno->nombre." ".$calificacion->alumno->ap_pat." ".$calificacion->alumno->ap_mat}}</td>
     <td>{{$calificacion->calificacion}}</td>
     <td>{{$calificacion->idgrupo}} </td>
-
+{{--
     <input type="hidden" id="docenteNombre" value="{{
       $calificacion->grupo->docente->nombre ." ".$calificacion->grupo->docente->ap_pat." ".
       $calificacion->grupo->docente->ap_mat.' - '.$calificacion->grupo->idcarrera
-    }}"/>
+    }}"/> --}}
 
     <td>
-    <a href="{{route('Constancias.show',[$calificacion->idcalificacion])}}" 
-      class="btn btn-success btn-xs" target="_blank">Generar</a>   
+    <a href="{{route('Constancias.show',[$calificacion->idcalificacion])}}"
+      class="btn btn-success btn-xs" target="_blank">Generar</a>
    </td>
  </tr>
  @endforeach
@@ -55,7 +55,7 @@
 @section('my_scripts')
 <script>
   //agregar filtros y demas cosas a la tabla
- $('#MyTable').DataTable({ "language": 
+ $('#MyTable').DataTable({ "language":
      { "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json" } });
   </script>
 @endsection
