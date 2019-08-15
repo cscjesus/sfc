@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Modalidad;
 class Alumno extends Model
 {
+    //php artisan make:model Alumno -m
+
     //indicar que la id no es autoincrementable, de lo contrario
     //se tratara de castear a int
     public $incrementing = false;

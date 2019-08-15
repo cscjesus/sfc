@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Utilidades\Utilidades;
 use App\Calificacion;
+use App\Constancia;
+
 class ConstanciasController extends Controller
 {
      /*
@@ -21,7 +23,7 @@ class ConstanciasController extends Controller
      */
     public function index()
     {
-       
+
         $calificaciones = Calificacion::get();
 
         return view('constancias.index',compact('calificaciones'));
@@ -58,8 +60,13 @@ class ConstanciasController extends Controller
     {
         $calificacion = Calificacion::find($id);
         //return $calificacion;
-        $utilidades = new Utilidades;
 
+        /*$constancia = new Constancia();
+        $constancia-> idcalificacion = $id;
+        $constancia-> fecha_emision = \Carbon\Carbon::now();
+        $constancia-> save();
+        */
+        $utilidades = new Utilidades;
         return $utilidades->generarConstancia($calificacion);
         //return  ;// __DIR__. "../../public/recursos/img/tec.jpg";
     }
