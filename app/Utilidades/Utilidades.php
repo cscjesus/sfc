@@ -73,6 +73,7 @@ class Utilidades
         $diaStr = "";
 
     switch ($dia) {
+        case 16: $diaStr = "dieciséis";  break;
         case 22: $diaStr = "veintidós";  break;
         case 23: $diaStr = "veintitrés"; break;
         case 26: $diaStr = "veintiséis"; break;
